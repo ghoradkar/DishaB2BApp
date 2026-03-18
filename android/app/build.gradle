@@ -1,0 +1,145 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+android {
+    namespace = project.hasProperty("app_namespace") ? project.app_namespace : "com.example.dishabtob"
+    compileSdkVersion flutter.compileSdkVersion
+//    ndkVersion flutter.ndkVersion
+//    ndkVersion "26.1.10909125"
+    ndkVersion "27.0.12077973"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.example.dishabtob"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+
+    signingConfigs {
+        release {
+            storeFile file("b2bNariman.jks")
+            storePassword "narimanb2b"
+            keyAlias "NarimanAlias"
+            keyPassword "narimanb2b"
+        }
+
+//        release {
+//            storeFile file("dubaiLifenity.jks")
+//            storePassword "DubaiLife"
+//            keyAlias "DubaiLifenityAlias"
+//            keyPassword "DubaiLife"
+//        }
+
+    }
+
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+
+    flavorDimensions "app"
+
+    productFlavors {
+
+        DubaiB2B {
+            dimension "app"
+            applicationId "com.DubaiLifenity.b2b"
+            versionCode 3
+            versionName "1.2.0"
+            manifestPlaceholders = [allowBackup: "false"]
+            resValue "string", "app_namespace", "com.DubaiLifenity.b2b"
+        }
+        B2BLondon {
+            dimension "app"
+            applicationId "com.londonb2b.app"
+            versionCode 1
+            versionName "1.0.0"
+            manifestPlaceholders = [allowBackup: "false"]
+            resValue "string", "app_namespace", "com.londonb2b.app"
+        }
+
+        B2BLifenity {
+            dimension "app"
+            applicationId "com.lifenity.b2b"
+            versionCode 1
+            versionName "1.0.0"
+            manifestPlaceholders = [allowBackup: "false"]
+            resValue "string", "app_namespace", "com.lifenity.b2b"
+        }
+
+        //For Nariman
+        B2BMobile {
+            dimension "app"
+            applicationId "com.Nariman.b2b"
+            versionCode 14
+            versionName "11.3.0"
+            manifestPlaceholders = [allowBackup: "false"]
+            resValue "string", "app_namespace", "com.Nariman.b2b"
+        }
+
+        //For Nariman beta
+        B2BMobileBeta {
+            dimension "app"
+            applicationId "com.narimanDev.b2b"
+            versionCode 10
+            versionName "10.0.0"
+            manifestPlaceholders = [allowBackup: "true"]
+            resValue "string", "app_namespace", "com.narimanDev.b2b"
+
+        }
+
+    }
+
+
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {}

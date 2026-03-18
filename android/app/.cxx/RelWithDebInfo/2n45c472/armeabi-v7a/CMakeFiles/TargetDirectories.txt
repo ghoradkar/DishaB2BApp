@@ -1,0 +1,2 @@
+D:/dishabtob/dishabtob/android/app/.cxx/RelWithDebInfo/2n45c472/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/dishabtob/dishabtob/android/app/.cxx/RelWithDebInfo/2n45c472/armeabi-v7a/CMakeFiles/rebuild_cache.dir

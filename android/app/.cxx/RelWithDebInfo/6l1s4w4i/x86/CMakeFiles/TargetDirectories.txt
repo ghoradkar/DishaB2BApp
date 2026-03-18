@@ -1,0 +1,2 @@
+D:/dishabtob/dishabtob/android/app/.cxx/RelWithDebInfo/6l1s4w4i/x86/CMakeFiles/edit_cache.dir
+D:/dishabtob/dishabtob/android/app/.cxx/RelWithDebInfo/6l1s4w4i/x86/CMakeFiles/rebuild_cache.dir
