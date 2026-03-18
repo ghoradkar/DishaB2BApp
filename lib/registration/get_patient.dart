@@ -41,7 +41,7 @@ class GetPatientState extends State<GetPatient> {
   @override
   void initState() {
     setState(() {
-      widget.IPD!.length == 0 ? load = true : load = false;
+      (widget.IPD?.length ?? []) == 0 ? load = true : load = false;
     });
     getUser();
     if (widget.IPD != null && widget.IPD!.isNotEmpty) {
@@ -675,4 +675,3 @@ class _SearchHeaderDelegate extends SliverPersistentHeaderDelegate {
     return oldDelegate.height != height || oldDelegate.child != child;
   }
 }
-

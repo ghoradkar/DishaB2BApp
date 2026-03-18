@@ -411,7 +411,7 @@ class FilterAppointmentState extends State<FilterAppointment> {
                             //     DateFormat('dd/MM/yyyy').format(pickedDate);
 
                             String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
+                                DateFormat('yyyy-MM-dd').format(pickedDate);
 
                             debugPrint(formattedDate);
 
@@ -526,9 +526,20 @@ class FilterAppointmentState extends State<FilterAppointment> {
                         GestureDetector(
                           onTap: () {
                             debugPrint(title);
-                            title == 'Patient Name'
-                                ? searchPatient(firstname.text, 2)
-                                : searchPatient(firstname.text, 1);
+                            if (fromdate.text.isNotEmpty &&
+                                firstname.text.isEmpty) {
+                              if (todate.text.isEmpty) {
+                                CustomMessage.toast("Please Select To Date");
+                              } else {
+                                searchPatient(
+                                    '', '', fromdate.text, todate.text);
+                              }
+                            } else {
+                              title == 'Patient Name'
+                                  ? searchPatient(firstname.text, '2', '', '')
+                                  : searchPatient(firstname.text, '1', '', '');
+                            }
+
                             // ( fromdate.text.isNotEmpty&&todate.text.isNotEmpty)&&(fromdate.text!='Enter From Date'&&todate.text!='Enter To Date')?
                             // Navigator.of(context).pushReplacement(
                             //   MaterialPageRoute(
@@ -572,7 +583,7 @@ class FilterAppointmentState extends State<FilterAppointment> {
             offlineChild: Offline()));
   }
 
-  searchPatient(patid, type) async {
+  searchPatient(String patid, String type, String fromdate, todate) async {
     getuser();
     IOClient ioClient = IOClient(ByPassCert().httpClient);
 
@@ -580,9 +591,15 @@ class FilterAppointmentState extends State<FilterAppointment> {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
+    var uri;
+    if (todate != "") {
+      uri = Uri.parse(
+          '${url.baseurl}${url.GET_PATIENT_SEARCH}?findText=$patid&patSearchType=$type&callFrom=reg&unitId=${decode!['unitMasterId']}&userType=${decode!['userType']}&userId=${decode!['userId']}&userFor=other&inputFromDate=$fromdate&inputToDate=$todate');
+    } else {
+      uri = Uri.parse(
+          '${url.baseurl}${url.GET_PATIENT_SEARCH}?findText=$patid&patSearchType=$type&callFrom=reg&unitId=${decode!['unitMasterId']}&userType=${decode!['userType']}&userId=${decode!['userId']}&userFor=other');
+    }
 
-    final uri = Uri.parse(
-        '${url.baseurl}${url.GET_PATIENT_SEARCH}?findText=$patid&patSearchType=$type&callFrom=reg&unitId=${decode!['unitMasterId']}&userType=${decode!['userType']}&userId=${decode!['userId']}&userFor=other');
     debugPrint(uri.path);
 
     final response = await ioClient.post(
