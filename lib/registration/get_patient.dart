@@ -113,11 +113,11 @@ class GetPatientState extends State<GetPatient> {
         SliverPersistentHeader(
           pinned: true,
           delegate: _SearchHeaderDelegate(
-            height: 56,
+            height: 60,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 6, left: 4, right: 4),
+              padding: const EdgeInsets.only(bottom: 10, left: 4, right: 4,top: 10),
               child: SizedBox(
-                height: 50,
+                height: 60,
                 child: TextFormField(
                   controller: searchController,
                   focusNode: _searchFocusNode,

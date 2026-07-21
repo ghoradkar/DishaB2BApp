@@ -1,12 +1,12 @@
 import 'package:flutter_flavor/flutter_flavor.dart';
 
 ///beta
-const String B2BMobileBeta =
-    "http://210.89.42.107:8383/EhatEnterprise/"; // pluscare beta
-const String DubaiB2B =
-    "http://210.89.42.107:8181/EhatEnterprise_DubaiJLT/"; // dubai beta
-const String B2BLifenity =
-    "http://103.251.94.38:8080/MIDMS-Apis/"; // lifenity beta
+// const String B2BMobileBeta =
+//     "http://210.89.42.107:8383/EhatEnterprise/"; // pluscare beta
+// const String DubaiB2B =
+//     "http://210.89.42.107:8181/EhatEnterprise_DubaiJLT/"; // dubai beta
+// const String B2BLifenity =
+//     "http://103.251.94.38:8080/MIDMS-Apis/"; // lifenity beta
 // const String B2BLifenityLondon = "";// lifenity london beta
 
 ///replica
@@ -16,9 +16,9 @@ const String B2BLifenity =
 // const String B2BLifenityLondon = "http://103.228.151.83:8080/DISHA_London_Replica/"; // london
 
 ///production
-///// const String B2BMobileBeta = "https://disha.pluscare.org/EhatEnterprise/";// pluscare
-// const String DubaiB2B = "https://genomic.lifenity.ae/DubaiJLT/";// dubai
-// const String B2BLifenity = "https://disha-api.lifenityhealth.com/MIDMS-Apis/";// lifenity
+const String B2BMobileBeta = "https://disha.pluscare.org/EhatEnterprise/";// pluscare
+const String DubaiB2B = "https://genomic.lifenity.ae/DubaiJLT/";// dubai
+const String B2BLifenity = "https://disha-api.lifenityhealth.com/MIDMS-Apis/";// lifenity
 
 //production
 // String baseurl = FlavorConfig.instance.name == 'DubaiB2B'

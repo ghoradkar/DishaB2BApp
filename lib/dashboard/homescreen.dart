@@ -1128,12 +1128,12 @@ class HomePageState extends State<HomePage> {
                 ),
               )
             : const SizedBox(),
-        billing.first.toString().contains('567:B To B Queue')
+        billing.first.toString().contains('567:B2B Queue')
             ? const SizedBox(
                 height: 10,
               )
             : const SizedBox(),
-        billing.first.toString().contains('567:B To B Queue')
+        billing.first.toString().contains('567:B2B Queue')
             ? GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -1624,9 +1624,9 @@ class HomePageState extends State<HomePage> {
       decode = json.decode(encodedMap);
       // decode=user!.first;
       // debugPrint(decode);
-      navigation = decode!['userAccesBeanList']['moduleViewHashSet'];
+      navigation = decode['userAccesBeanList']['moduleViewHashSet'] ?? [];
 
-      billing = decode!['userAccesBeanList']["subModuleViewHashSet"];
+      billing = decode['userAccesBeanList']["subModuleViewHashSet"] ?? [];
 
       if (navigation.isNotEmpty) navigation.contains("'1:Help Desk',");
 
